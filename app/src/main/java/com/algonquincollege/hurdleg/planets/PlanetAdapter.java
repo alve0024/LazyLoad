@@ -9,6 +9,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,14 +56,13 @@ public class PlanetAdapter extends ArrayAdapter<Planet> {
 
         // TODO: Display planet photo in ImageView widget
         // Lazy initialize a planet's bitmap image
-        System.out.print("planet: " + planet.getName());
         if (planet.getBitmap() != null) {
-            System.out.println("\tbitmap in memory");
+            Log.i( "PLANETS", planet.getName() + "\tbitmap in memory" );
             ImageView image = (ImageView) view.findViewById(R.id.imageView1);
             image.setImageBitmap(planet.getBitmap());
         }
         else {
-            System.out.println("\tfetching bitmap using AsyncTask");
+            Log.i( "PLANETS", planet.getName() + "\tfetching bitmap using AsyncTask");
             PlanetAndView container = new PlanetAndView();
             container.planet = planet;
             container.view = view;
